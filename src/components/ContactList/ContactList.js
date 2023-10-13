@@ -1,9 +1,11 @@
+// ContactList.js
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from '../../redux/selectors';
 import styles from './ContactList.module.css';
+import ContactListItem from '../ContactListItem/ContactListItem';
 
-export const ContactList = ({ onDeleteContact }) => {
+export const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
 
@@ -20,13 +22,7 @@ export const ContactList = ({ onDeleteContact }) => {
       {filteredContacts.map((contact, index) => (
         <li key={contact.id} className={styles.item}>
           {contact.name}
-          <button
-            type="button"
-            onClick={() => onDeleteContact(contact.id)} // Викликаємо функцію onDeleteContact, яка була передана в компонент
-            className={styles.button}
-          >
-            Delete
-          </button>
+          <ContactListItem contact={contact} index={index} />
         </li>
       ))}
     </ul>

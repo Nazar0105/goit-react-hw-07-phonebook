@@ -1,3 +1,4 @@
+// api
 import axios from 'axios';
 
 const BASE_URL = 'https://6527bd77931d71583df14b76.mockapi.io/contacts';
@@ -14,4 +15,13 @@ export const addContact = async (contact) => {
 
 export const deleteContact = async (contactId) => {
   await axios.delete(`${BASE_URL}/${contactId}`);
+};
+
+export const saveContacts = (contacts) => {
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+};
+
+export const loadContacts = () => {
+  const storedContacts = localStorage.getItem('contacts');
+  return storedContacts ? JSON.parse(storedContacts) : [];
 };

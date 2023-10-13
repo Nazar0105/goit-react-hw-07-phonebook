@@ -1,12 +1,13 @@
+// Filter.js
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addFilter } from '../../redux/filterSlice'; 
-import styles from './Filter.module.css'; 
+import { addFilter } from '../../redux/filterSlice';
+import styles from './Filter.module.css';
 
 export const Filter = () => {
   const dispatch = useDispatch();
 
-  const handleFilterChange = e => {
+  const handleFilterChange = (e) => {
     dispatch(addFilter(e.target.value));
   };
 
